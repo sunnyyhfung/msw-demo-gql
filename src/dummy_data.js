@@ -1,7 +1,7 @@
 export const users = [
-  { id: "1", name: "John Smith", password: "123456" },
-  { id: "2", name: "Andrew Adams", password: "123456" },
-  { id: "3", name: "Eric Smart", password: "123456" },
+  { id: "1", username: "John_Smith", password: "123456" },
+  { id: "2", username: "Andrew_Adams", password: "123456" },
+  { id: "3", username: "Eric_Smart", password: "123456" },
 ];
 
 export const posts = [
@@ -89,7 +89,7 @@ export const posts = [
     title: "24 Hong Kong Strategies You Should Try",
     body: "Nunc orci urna, pulvinar non bibendum quis, aliquet quis dui. Duis scelerisque enim in lectus efficitur molestie. Integer eget elit vitae lorem facilisis suscipit sit amet vitae metus. Quisque neque erat, facilisis vel magna a, rutrum iaculis neque. Nullam facilisis lectus sit amet dolor vehicula, et convallis tellus scelerisque. Nullam aliquet non leo et ornare. Duis vitae scelerisque neque. Praesent in dolor nisl. Sed non lobortis nulla.",
     author: "3",
-    comments: ["2", "15"],
+    comments: ["2"],
   },
 ];
 
@@ -98,104 +98,74 @@ export const comments = [
     id: "1",
     content:
       "Nunc ut suscipit purus, nec lobortis tellus. Aenean luctus et mi sit amet condimentum. Cras malesuada porttitor lectus, quis venenatis nisi mattis id. ",
-    author: "1",
-    post: "11",
   },
   {
     id: "2",
     content:
       "Phasellus ut ante feugiat, mollis sem eu, facilisis neque. Fusce tempus porttitor sapien non auctor. Nunc ut urna nec ex ullamcorper tristique sed eu nunc.",
-    author: "2",
-    post: "12",
   },
   {
     id: "3",
     content:
       "Morbi vel metus elit. Suspendisse tortor est, vehicula et elementum non, suscipit nec quam. Vestibulum efficitur non justo vitae rhoncus. ",
-    author: "3",
-    post: "1",
   },
   {
     id: "4",
     content:
       "Suspendisse efficitur fringilla tellus, id mollis dolor fermentum eget. Pellentesque in dignissim lacus.",
-    author: "1",
-    post: "2",
   },
   {
     id: "5",
     content:
       "Curabitur turpis nulla, elementum id aliquam id, laoreet ut elit. Quisque rhoncus est neque, in rutrum neque iaculis vel. Pellentesque tincidunt libero enim, quis varius turpis sodales id.",
-    author: "2",
-    post: "3",
   },
   {
     id: "6",
     content:
       "Donec at nibh gravida, tincidunt lorem eu, dignissim sem. Curabitur consequat augue quis tortor vestibulum, a fringilla sem malesuada. Ut id aliquam mi, eget sagittis est.",
-    author: "3",
-    post: "4",
   },
   {
     id: "7",
     content:
       "Praesent at imperdiet massa, in mollis elit. Nullam dignissim ullamcorper nisl. Vivamus quis fermentum tellus, et ultricies velit.",
-    author: "1",
-    post: "5",
   },
   {
     id: "8",
     content:
       "Morbi sagittis in dolor et feugiat. Aenean in quam eu justo tempus congue. Duis ultrices nulla neque, ac molestie odio scelerisque eget.",
-    author: "2",
-    post: "6",
   },
   {
     id: "9",
     content:
       "Nunc volutpat erat non nisi fermentum consectetur. Quisque ornare tellus nec gravida mattis. Nunc dui mauris, euismod at pulvinar eget, tempus vulputate nisl.",
-    author: "3",
-    post: "7",
   },
   {
     id: "10",
     content:
       "Quisque ut orci fermentum lectus luctus facilisis quis in nibh. Cras a turpis ac purus ultricies imperdiet. Ut quis vestibulum sapien. Curabitur ex ante, venenatis at metus a, efficitur ultricies elit.",
-    author: "1",
-    post: "8",
   },
   {
     id: "11",
     content:
       "Nulla eu est feugiat purus ullamcorper elementum sit amet malesuada ex. Vestibulum ut ligula at velit placerat dapibus sit amet id nisl.",
-    author: "2",
-    post: "9",
   },
   {
     id: "12",
     content:
       "Aliquam scelerisque egestas lorem, sit amet interdum ante mattis sit amet. Nam faucibus, elit efficitur feugiat porta, eros ipsum venenatis ante, vel imperdiet magna velit in sem.",
-    author: "3",
-    post: "10",
   },
   {
     id: "13",
     content: "Ut cursus justo vel egestas accumsan.",
-    author: "1",
-    post: "11",
   },
   {
     id: "14",
     content:
       "Integer facilisis pharetra massa a hendrerit. Nunc dignissim sapien a lorem sodales eleifend. Nunc maximus ultricies tortor. Ut augue est, faucibus quis hendrerit a, blandit in diam.",
-    author: "2",
-    post: "11",
   },
   {
     id: "15",
     content:
       "Quisque eros dui, venenatis non vulputate laoreet, volutpat ut nulla.",
-    author: "3",
-    post: "12",
   },
 ];
