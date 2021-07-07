@@ -1,28 +1,62 @@
 import { graphql } from "msw";
+import { graphql as graphqlRequest } from "graphql";
+import { makeExecutableSchema } from "@graphql-tools/schema";
 import { users, posts, comments } from "../dummy_data";
-
-// const _posts = posts.map((post) => {
-//   const idx = users.findIndex((user) => user.id === post.author);
-
-//   const copyCommentIds = [...post.comments];
-
-//   const copyComments = copyCommentIds.map((id) => {
-//     return comments[id];
-//   });
-
-//   const output = {
-//     ...post,
-//     author: users[idx],
-//     comments: copyComments,
-//   };
-
-//   return output;
-// });
 
 const _users = users.map((user) => ({
   id: user.id,
   username: user.username,
 }));
+
+const typeDefs = `
+  type User {
+    id: ID!
+    username: String!
+  }
+
+  type Post {
+    id: ID!
+    title: String!
+    body: String!
+    author: User!
+    comments: [Comment]!
+  }
+
+  type Comment {
+    id: ID!
+    content: String!
+  }
+
+  type Query {
+    posts: [Post]!
+  }
+ 
+`;
+
+const resolvers = {
+  Query: {
+    posts() {
+      return posts;
+    },
+  },
+  Post: {
+    author(parentValue) {
+      return users.find((user) => user.id === parentValue.author);
+    },
+    comments(parentValue) {
+      const postComments = parentValue.comments.map((comment) => {
+        return comments.find((_comment) => _comment.id === comment);
+      });
+
+      return postComments;
+    },
+  },
+};
+
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers,
+});
 
 export const handlers = [
   /**
@@ -200,5 +234,23 @@ export const handlers = [
       }),
       ctx.cookie("authToken")
     );
+  }),
+
+  /**
+   * ********************************************************
+   *  Catch All Operation
+   * ********************************************************
+   */
+
+  graphql.operation(async (req, res, ctx) => {
+    const payload = await graphqlRequest(
+      schema,
+      req.body.query,
+      typeDefs,
+      { req, res, ctx },
+      req.variables
+    );
+
+    return res(ctx.data(payload.data), ctx.errors(payload.errors));
   }),
 ];
