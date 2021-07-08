@@ -1,4 +1,4 @@
-import { graphql } from "msw";
+import { graphql, createResponseComposition, context } from "msw";
 import { graphql as graphqlRequest } from "graphql";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { users, posts, comments } from "../dummy_data";
@@ -58,6 +58,8 @@ const schema = makeExecutableSchema({
   resolvers,
 });
 
+const delayedResponse = createResponseComposition(null, [context.delay(3000)]);
+
 export const handlers = [
   /**
    * ********************************************************
@@ -104,7 +106,13 @@ export const handlers = [
       return copy;
     });
 
-    return res(
+    // return res(
+    //   ctx.data({
+    //     posts: output,
+    //   })
+    // );
+
+    return delayedResponse(
       ctx.data({
         posts: output,
       })
