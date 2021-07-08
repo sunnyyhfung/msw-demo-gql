@@ -1,4 +1,4 @@
-import { graphql, createResponseComposition, context } from "msw";
+import { graphql, createResponseComposition, context, compose } from "msw";
 import { graphql as graphqlRequest } from "graphql";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { users, posts, comments } from "../dummy_data";
@@ -58,7 +58,11 @@ const schema = makeExecutableSchema({
   resolvers,
 });
 
-const delayedResponse = createResponseComposition(null, [context.delay(3000)]);
+const delayedResponse = createResponseComposition(null, [context.delay(2000)]);
+
+const delayedCtx = (data) => {
+  return compose(context.delay(2000), context.data(data));
+};
 
 export const handlers = [
   /**
@@ -112,11 +116,17 @@ export const handlers = [
     //   })
     // );
 
-    return delayedResponse(
-      ctx.data({
+    return res(
+      delayedCtx({
         posts: output,
       })
     );
+
+    // return delayedResponse(
+    //   ctx.data({
+    //     posts: output,
+    //   })
+    // );
   }),
 
   // Handles a "GetSinglePost" query
