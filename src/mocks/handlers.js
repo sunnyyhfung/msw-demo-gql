@@ -58,9 +58,10 @@ const schema = makeExecutableSchema({
   resolvers,
 });
 
-const delayedResponse = createResponseComposition(null, [context.delay(2000)]);
+// const delayedResponse = createResponseComposition({ delay: 2000 }); // overwirte response properties
+const delayedResponse = createResponseComposition(null, [context.delay(2000)]); //  using response transformers
 
-const delayedCtx = (data) => {
+const delayedResponseTransformer = (data) => {
   return compose(context.delay(2000), context.data(data));
 };
 
@@ -117,7 +118,7 @@ export const handlers = [
     // );
 
     return res(
-      delayedCtx({
+      delayedResponseTransformer({
         posts: output,
       })
     );
