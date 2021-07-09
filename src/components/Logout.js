@@ -13,7 +13,7 @@ const Logout = ({ setIsAuth }) => {
     logout();
   };
 
-  return <div onClick={handleLgout}>Logout</div>;
+  return <button onClick={handleLgout}>Logout</button>;
 };
 
 export default Logout;

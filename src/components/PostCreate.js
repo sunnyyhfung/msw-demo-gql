@@ -3,6 +3,10 @@ import { useMutation } from "@apollo/client";
 
 import { ADD_POST, GET_ALL_POSTS } from "../queries/postsQuery";
 
+const style = {
+  marginTop: "15px",
+};
+
 const PostCreate = ({ user }) => {
   const [post, setPost] = useState({
     title: "",
@@ -37,7 +41,7 @@ const PostCreate = ({ user }) => {
   };
 
   return (
-    <>
+    <div style={style}>
       Create Ppost:
       <form onSubmit={hanldeSubmit}>
         <input
@@ -58,7 +62,7 @@ const PostCreate = ({ user }) => {
         />
         <input type="submit" value="Submit" />
       </form>
-    </>
+    </div>
   );
 };
 

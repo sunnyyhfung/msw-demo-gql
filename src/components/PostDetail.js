@@ -1,11 +1,24 @@
+const styleContainer = {
+  border: "1px solid black",
+  marginTop: "15px",
+};
+
+const styleBody = {
+  marginTop: "10px",
+};
+
+const styleAuthor = {
+  marginTop: "10px",
+};
+
 const PostDetail = (props) => {
   const { post } = props;
 
   return (
-    <div style={{ border: "1px solid red" }}>
+    <div style={styleContainer}>
       <div>{post.title}</div>
-      <div>{post.body}</div>
-      <div>{post.author.username}</div>
+      <div style={styleBody}>{post.body}</div>
+      <div style={styleAuthor}>{post.author.username}</div>
     </div>
   );
 };

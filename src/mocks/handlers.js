@@ -111,17 +111,18 @@ export const handlers = [
       return copy;
     });
 
-    // return res(
-    //   ctx.data({
-    //     posts: output,
-    //   })
-    // );
-
     return res(
-      delayedResponseTransformer({
+      ctx.delay(2000),
+      ctx.data({
         posts: output,
       })
     );
+
+    // return res(
+    //   delayedResponseTransformer({
+    //     posts: output,
+    //   })
+    // );
 
     // return delayedResponse(
     //   ctx.data({
