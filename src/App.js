@@ -37,7 +37,8 @@ function App() {
         <Login setIsAuth={setIsAuth} />
       )}
       {isAuth && <PostCreate user={user} />}
-      <PostList />
+      {isAuth ? <PostList user={user} /> : <PostList />}
+
     </div>
   );
 }
